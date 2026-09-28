@@ -47,7 +47,7 @@
             z-index: 100;
         }
 
-        .header-right {
+        .header-left {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -62,7 +62,7 @@
         }
 
         .store-logo-box {
-            text-align: left;
+            text-align: right;
         }
 
         .store-logo {
@@ -241,10 +241,108 @@
             z-index: 2147483647; 
             box-shadow: 0 -2px 10px rgba(0,0,0,0.5); 
         }
-        .nav-item { text-align: center; color: #8a9ba8; font-size: 11px; text-decoration: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .nav-item { text-align: center; color: #8a9ba8; font-size: 11px; text-decoration: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
         .nav-item i { font-size: 18px; }
         .nav-item.active { color: #00ffcc; }
         .cart-badge-count { position: absolute; top: -3px; right: 8px; background: #dc3545; color: #fff; font-size: 9px; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        /* نافذة تسجيل الدخول المنبثقة (Modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            backdrop-filter: blur(5px);
+        }
+        .login-card {
+            background: #121821;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: #8a9ba8;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .login-icon-circle {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ffcc;
+            font-size: 24px;
+        }
+        .login-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            background: #19222d;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .country-code {
+            padding: 12px 15px;
+            background: #1f2b3a;
+            color: #00ffcc;
+            font-weight: 700;
+            font-size: 14px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+        .phone-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            text-align: right;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .login-btn {
+            width: 100%;
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 15px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: 0.2s;
+        }
+        .login-btn:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
@@ -255,15 +353,16 @@
         <span>⚡ تفعيل فوري وسريع</span>
     </div>
 
-    <!-- الهيدر العلوي الأسود -->
+    <!-- الهيدر العلوي الأسود (أيقونة حسابي صارت فوق على اليسار) -->
     <header>
-        <div class="header-right">
-            <i class="fa-solid fa-bars header-icon"></i>
-            <i class="fa-solid fa-magnifying-glass header-icon"></i>
-        </div>
         <div class="store-logo-box">
             <div class="store-logo">ULTRA PLUS | <span>ألترا بلس</span></div>
             <div class="store-subtitle">التطبيق الأكثر مبيعاً</div>
+        </div>
+        <div class="header-left">
+            <i class="fa-solid fa-user header-icon" onclick="openLoginModal()" title="حسابي"></i>
+            <i class="fa-solid fa-magnifying-glass header-icon" onclick="alert('خاصية البحث قادمة قريباً!')"></i>
+            <i class="fa-solid fa-bars header-icon" onclick="alert('القائمة الرئيسية')"></i>
         </div>
     </header>
 
@@ -327,28 +426,64 @@
 
     <!-- شريط التنقل السفلي -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item">
+        <div class="nav-item" onclick="openLoginModal()">
             <i class="fa-regular fa-user"></i>
             حسابي
-        </a>
-        <a href="#" class="nav-item">
+        </div>
+        <div class="nav-item" onclick="alert('سلة المشتريات فارغة حالياً')">
             <div class="cart-badge-count">0</div>
             <i class="fa-solid fa-bag-shopping"></i>
             السلة
-        </a>
-        <a href="#" class="nav-item">
+        </div>
+        <div class="nav-item" onclick="alert('خاصية البحث')">
             <i class="fa-solid fa-magnifying-glass"></i>
             بحث
-        </a>
-        <a href="#" class="nav-item">
+        </div>
+        <div class="nav-item" onclick="alert('قسم التصنيفات')">
             <i class="fa-solid fa-layer-group"></i>
             التصنيفات
-        </a>
+        </div>
         <a href="index.html" class="nav-item active">
             <i class="fa-solid fa-house"></i>
             الرئيسية
         </a>
     </div>
+
+    <!-- نافذة تسجيل الدخول برقم الجوال (تفتح عند الضغط على حسابي) -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-card">
+            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+            <div class="login-icon-circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="login-title">تسجيل الدخول</div>
+            
+            <div class="input-group">
+                <input type="tel" class="phone-input" placeholder="51 234 5678" id="phoneNumber">
+                <div class="country-code">+966</div>
+            </div>
+
+            <button class="login-btn" onclick="submitPhone()">دخول</button>
+        </div>
+    </div>
+
+    <script>
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+        function submitPhone() {
+            const phone = document.getElementById('phoneNumber').value;
+            if(phone.length < 9) {
+                alert('الرجاء إدخال رقم جوال صحيح');
+            } else {
+                alert('تم إرسال رمز التحقق إلى رقمك بنجاح! (تجريبي)');
+                closeLoginModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
