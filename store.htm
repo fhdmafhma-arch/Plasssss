@@ -3,255 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألترا بلس - ULTRA PLUS</title>
+    <title>ألترا بلس - ULTRA PLUS | المتجر</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-        }
-        body {
-            background-color: #f8f9fa;
-            color: #212529;
-            padding-bottom: 90px;
-        }
-        /* شريط التنبيهات العلوي */
-        .top-ticker {
-            background-color: #111;
-            color: #00ffcc;
-            text-align: center;
-            padding: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        /* الهيدر العلوي */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .store-logo {
-            font-size: 16px;
-            font-weight: 900;
-            color: #000;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .store-logo span {
-            color: #00897b;
-        }
-        .menu-icon {
-            font-size: 20px;
-            color: #333;
-            cursor: pointer;
-        }
-        /* بانر العنوان */
-        .hero-banner {
-            text-align: center;
-            padding: 20px 15px;
-            background: #ffffff;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-        .hero-banner h1 {
-            font-size: 20px;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-        .hero-banner p {
-            color: #00897b;
-            font-size: 13px;
-            font-weight: 700;
-        }
-        /* شبكة المنتجات */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding: 10px 15px;
-        }
-        .product-card {
-            background-color: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #eaeaea;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            position: relative;
-        }
-        .product-img-box {
-            width: 100%;
-            height: 140px;
-            background: #111;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 14px;
-            text-align: center;
-            padding: 10px;
-        }
-        .rating-badge {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            background: rgba(0,0,0,0.6);
-            color: #ffc107;
-            padding: 3px 8px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-        .discount-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: #dc3545;
-            color: #fff;
-            padding: 2px 6px;
-            border-radius: 6px;
-            font-size: 10px;
-        }
-        .product-details {
-            padding: 12px;
-        }
-        .product-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-        .product-category {
-            font-size: 11px;
-            color: #777;
-            margin-bottom: 10px;
-        }
-        .price-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .current-price {
-            font-size: 15px;
-            font-weight: 900;
-            color: #00897b;
-        }
-        .old-price {
-            font-size: 11px;
-            color: #999;
-            text-decoration: line-through;
-        }
-        .add-to-cart-btn {
-            width: 100%;
-            background-color: #fff;
-            border: 1.5px solid #00897b;
-            color: #00897b;
-            padding: 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: 0.2s;
-        }
-        .add-to-cart-btn:active {
-            background-color: #00897b;
-            color: #fff;
-        }
-
-        /* زر الواتساب العائم */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 85px;
-            left: 20px;
-            background-color: #25d366;
-            color: #fff;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            text-decoration: none;
-        }
-
-        /* شريط التنقل السفلي الاحترافي */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            border-top: 1px solid #eaeaea;
-            z-index: 1000;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-        }
-        .nav-item {
-            text-align: center;
-            color: #6c757d;
-            font-size: 11px;
-            text-decoration: none;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
-        }
-        .nav-item i {
-            font-size: 18px;
-        }
-        .nav-item.active {
-            color: #00897b;
-        }
-        .cart-badge-count {
-            position: absolute;
-            top: -3px;
-            right: 8px;
-            background: #dc3545;
-            color: #fff;
-            font-size: 9px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: #f8f9fa; color: #212529; padding-bottom: 90px; }
+        .top-ticker { background-color: #111; color: #00ffcc; text-align: center; padding: 8px; font-size: 11px; font-weight: 700; display: flex; justify-content: center; gap: 15px; overflow-x: auto; white-space: nowrap; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background-color: #ffffff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; }
+        .store-logo { font-size: 16px; font-weight: 900; color: #000; display: flex; align-items: center; gap: 6px; }
+        .store-logo span { color: #00897b; }
+        .menu-icon { font-size: 20px; color: #333; cursor: pointer; }
+        .hero-banner { text-align: center; padding: 20px 15px; background: #ffffff; margin-bottom: 10px; border-bottom: 1px solid #f1f1f1; }
+        .hero-banner h1 { font-size: 20px; font-weight: 900; color: #1a1a1a; margin-bottom: 5px; }
+        .hero-banner p { color: #00897b; font-size: 13px; font-weight: 700; }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 15px; }
+        .product-card { background-color: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #eaeaea; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); position: relative; }
+        .product-img-box { width: 100%; height: 140px; background: #111; position: relative; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; text-align: center; padding: 10px; }
+        .rating-badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #ffc107; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; }
+        .discount-badge { position: absolute; top: 8px; right: 8px; background: #dc3545; color: #fff; padding: 2px 6px; border-radius: 6px; font-size: 10px; }
+        .product-details { padding: 12px; }
+        .product-title { font-size: 13px; font-weight: 700; color: #222; margin-bottom: 4px; line-height: 1.4; }
+        .product-category { font-size: 11px; color: #777; margin-bottom: 10px; }
+        .price-box { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .current-price { font-size: 15px; font-weight: 900; color: #00897b; }
+        .old-price { font-size: 11px; color: #999; text-decoration: line-through; }
+        .add-to-cart-btn { width: 100%; background-color: #fff; border: 1.5px solid #00897b; color: #00897b; padding: 8px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; }
+        .whatsapp-float { position: fixed; bottom: 85px; left: 20px; background-color: #25d366; color: #fff; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ffffff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eaeaea; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+        .nav-item { text-align: center; color: #6c757d; font-size: 11px; text-decoration: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #00897b; }
+        .cart-badge-count { position: absolute; top: -3px; right: 8px; background: #dc3545; color: #fff; font-size: 9px; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنبيهات العلوي -->
     <div class="top-ticker">
         <span>⚡ سرعة وأداء</span>
         <span>🔄 تحديث مستمر</span>
@@ -259,21 +46,19 @@
         <span>🔒 آمن وموثوق</span>
     </div>
 
-    <!-- الهيدر باسم المتجر عربي والانجليزي -->
     <header>
         <div class="store-logo">ULTRA PLUS | <span>ألترا بلس</span></div>
         <div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
     </header>
 
-    <!-- بانر العنوان -->
+    <!-- تم تحديث البانر هنا -->
     <div class="hero-banner">
-        <h1>تطبيقات ألترا بلس الشاملة</h1>
+        <h1>متجر ألترا بلس | ULTRA PLUS</h1>
         <p>⚡ تسليم وتفعيل فوري بنفس الثانية</p>
     </div>
 
-    <!-- شبكة المنتجات -->
     <div class="products-grid">
-        <!-- المنتج الأول -->
+        <!-- المنتج الأول (الفضي) -->
         <div class="product-card">
             <div class="product-img-box" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
                 <div class="rating-badge">5 ⭐</div>
@@ -285,17 +70,17 @@
                 <div class="product-category">باقة الفضية</div>
                 <div class="price-box">
                     <div>
-                        <div class="current-price">49 ر.س</div>
+                        <div class="current-price">20.99 ر.س</div>
                         <div class="old-price">139 ر.س</div>
                     </div>
                 </div>
-                <button class="add-to-cart-btn" onclick="alert('تمت إضافة المنتج إلى السلة بنجاح!')">
-                    <i class="fa-solid fa-bag-shopping"></i> أضف إلى السلة
-                </button>
+                <a href="https://wa.me/" class="add-to-cart-btn" target="_blank">
+                    <i class="fa-solid fa-bag-shopping"></i> اطلب الآن
+                </a>
             </div>
         </div>
 
-        <!-- المنتج الثاني -->
+        <!-- المنتج الثاني (الذهبي) -->
         <div class="product-card">
             <div class="product-img-box" style="background: linear-gradient(135deg, #1f4037, #99f2c8);">
                 <div class="rating-badge">5 ⭐</div>
@@ -307,42 +92,40 @@
                 <div class="product-category">باقة الذهبية ⭐</div>
                 <div class="price-box">
                     <div>
-                        <div class="current-price">89 ر.س</div>
+                        <div class="current-price">30.99 ر.س</div>
                         <div class="old-price">279 ر.س</div>
                     </div>
                 </div>
-                <button class="add-to-cart-btn" onclick="alert('تمت إضافة المنتج إلى السلة بنجاح!')">
-                    <i class="fa-solid fa-bag-shopping"></i> أضف إلى السلة
-                </button>
+                <a href="https://wa.me/" class="add-to-cart-btn" target="_blank">
+                    <i class="fa-solid fa-bag-shopping"></i> اطلب الآن
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- زر الواتساب العائم -->
     <a href="https://wa.me/" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- شريط التنقل السفلي -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item" onclick="alert('الانتقال إلى صفحة حساب العميل')">
+        <a href="#" class="nav-item">
             <i class="fa-regular fa-user"></i>
             حسابي
         </a>
-        <a href="#" class="nav-item" onclick="alert('سلة المشتريات فارغة حالياً')">
+        <a href="#" class="nav-item">
             <div class="cart-badge-count">0</div>
             <i class="fa-solid fa-bag-shopping"></i>
             السلة
         </a>
-        <a href="#" class="nav-item" onclick="alert('فتح نافذة البحث في ألترا بلس...')">
+        <a href="#" class="nav-item">
             <i class="fa-solid fa-magnifying-glass"></i>
             بحث
         </a>
-        <a href="#" class="nav-item" onclick="alert('عرض تصنيفات الأقسام')">
+        <a href="#" class="nav-item">
             <i class="fa-solid fa-layer-group"></i>
             التصنيفات
         </a>
-        <a href="#" class="nav-item active" onclick="alert('أنت في الصفحة الرئيسية بالفعل')">
+        <a href="index.html" class="nav-item">
             <i class="fa-solid fa-house"></i>
             الرئيسية
         </a>
