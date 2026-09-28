@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألترا بلس - ULTRA PLUS | البحث</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+        body { background-color: #0b0f15; color: #ffffff; padding-bottom: 100px; min-height: 100vh; }
+        
+        iframe[src*="netlify"], div[id*="netlify"], div[class*="netlify"], .netlify-badge {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            z-index: -9999 !important;
+        }
+
+        .top-ticker {
+            background-color: #2e7d32;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #000000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-right { display: flex; align-items: center; gap: 12px; }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .header-icon {
+            font-size: 17px;
+            color: #00ffcc;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .store-logo-box { text-align: center; }
+        .store-logo {
+            font-size: 14px;
+            font-weight: 900;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .store-logo span { color: #00ffcc; }
+        .store-subtitle { font-size: 9px; color: #8a9ba8; font-weight: 700; margin-top: 2px; }
+
+        /* محتوى صفحة البحث تماماً مثل الصورة */
+        .search-container {
+            padding: 20px 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-box-wrapper {
+            background: #121821;
+            border: 1px solid #00ffcc;
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,255,204,0.1);
+        }
+
+        .search-input-mock {
+            color: #8a9ba8;
+            font-size: 14px;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            width: 100%;
+            outline: none;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+        }
+
+        .search-box-wrapper i {
+            color: #00ffcc;
+            font-size: 16px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #00ffcc;
+            margin-bottom: 15px;
+        }
+
+        .tags-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .tag-pill {
+            background: #121821;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .tag-pill:hover {
+            border-color: #00ffcc;
+            color: #00ffcc;
+        }
+
+        .products-search-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s;
+        }
+
+        .search-product-item:hover {
+            color: #00ffcc;
+        }
+
+        .search-product-item i {
+            color: #00ffcc;
+            font-size: 15px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 85px; left: 20px;
+            background-color: #25d366; color: #fff;
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 999; text-decoration: none;
+        }
+
+        .bottom-nav { 
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background-color: #121821; display: flex; justify-content: space-around; 
+            padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08); 
+            z-index: 2147483647; box-shadow: 0 -2px 10px rgba(0,0,0,0.5); 
+        }
+        .nav-item { text-align: center; color: #8a9ba8; font-size: 11px; text-decoration: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
+        .nav-item i { font-size: 18px; }
+        .nav-item.active { color: #00ffcc; }
+        .cart-badge-count { position: absolute; top: -3px; right: 8px; background: #dc3545; color: #fff; font-size: 9px; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); display: none; justify-content: center; align-items: center;
+            z-index: 99999; backdrop-filter: blur(5px);
+        }
+        .login-card {
+            background: #121821; border: 1px solid rgba(255,255,255,0.1);
+            width: 90%; max-width: 380px; border-radius: 20px; padding: 25px; text-align: center; position: relative;
+        }
+        .close-modal { position: absolute; top: 15px; left: 15px; background: none; border: none; color: #8a9ba8; font-size: 20px; cursor: pointer; }
+        .login-icon-circle {
+            width: 60px; height: 60px; background: rgba(0, 255, 204, 0.1);
+            border: 1px solid rgba(0, 255, 204, 0.3); border-radius: 50%; margin: 0 auto 15px auto;
+            display: flex; align-items: center; justify-content: center; color: #00ffcc; font-size: 24px;
+        }
+        .login-title { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 20px; }
+        .input-group { display: flex; background: #19222d; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; margin-bottom: 15px; }
+        .country-code { padding: 12px 15px; background: #1f2b3a; color: #00ffcc; font-weight: 700; font-size: 14px; border-left: 1px solid rgba(255,255,255,0.1); }
+        .phone-input { width: 100%; background: transparent; border: none; padding: 12px 15px; color: #fff; font-size: 14px; outline: none; text-align: right; font-family: 'Tajawal', sans-serif; }
+        .login-btn { width: 100%; background: #00ffcc; color: #000; border: none; padding: 12px; border-radius: 12px; font-weight: 900; font-size: 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="top-ticker">
+        <span>🎉 كود خصم اليوم الوطني: SA96</span>
+        <span>⚡ تفعيل فوري وسريع</span>
+    </div>
+
+    <header>
+        <div class="header-right">
+            <i class="fa-solid fa-bars header-icon" onclick="alert('القائمة الرئيسية')"></i>
+            <a href="search.html" class="header-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+        </div>
+        <div class="store-logo-box">
+            <div class="store-logo">ألترا بلس | <span>ULTRA PLUS</span></div>
+            <div class="store-subtitle">التطبيق الأكثر مبيعاً</div>
+        </div>
+        <div class="header-left">
+            <a href="cart.html" class="header-icon" style="position: relative;">
+                <div class="cart-badge-count" style="top: -5px; right: -5px;">0</div>
+                <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+            <i class="fa-regular fa-user header-icon" onclick="openLoginModal()" title="حسابي"></i>
+        </div>
+    </header>
+
+    <!-- محتوى صفحة البحث بالتفصيل المطابق للصورة -->
+    <div class="search-container">
+        <!-- شريط البحث العلوي -->
+        <div class="search-box-wrapper">
+            <input type="text" class="search-input-mock" placeholder="ادخل كلمة البحث...">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+
+        <!-- التصنيفات الأكثر بحثاً -->
+        <div class="section-title">التصنيفات الأكثر بحثاً</div>
+        <div class="tags-grid">
+            <a href="#" class="tag-pill">اكواد السناب بلس</a>
+            <a href="#" class="tag-pill">تطبيقات بلس ايفون</a>
+            <a href="#" class="tag-pill">اشتراك Ultra TV</a>
+        </div>
+
+        <!-- المنتجات الأكثر بحثاً -->
+        <div class="section-title">المنتجات الأكثر بحثاً</div>
+        <div class="products-search-list">
+            <a href="#" class="search-product-item">
+                <span>كود سناب بلس اسبوعي</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="#" class="search-product-item">
+                <span>كود سناب بلس شهري</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="#" class="search-product-item">
+                <span>أشتراك تطبيقات بلس للايفون - سنة كاملة!</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="#" class="search-product-item">
+                <span>كود سناب بلس يومي</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="#" class="search-product-item">
+                <span>عرض اليوم الوطني جميع اشتراكات البلس</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+    </div>
+
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="openLoginModal()">
+            <i class="fa-regular fa-user"></i>
+            حسابي
+        </div>
+        <a href="cart.html" class="nav-item">
+            <div class="cart-badge-count">0</div>
+            <i class="fa-solid fa-bag-shopping"></i>
+            السلة
+        </a>
+        <a href="search.html" class="nav-item active">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            بحث
+        </a>
+        <div class="nav-item" onclick="alert('قسم التصنيفات')">
+            <i class="fa-solid fa-layer-group"></i>
+            التصنيفات
+        </div>
+        <a href="store.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            الرئيسية
+        </a>
+    </div>
+
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-card">
+            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+            <div class="login-icon-circle"><i class="fa-solid fa-user"></i></div>
+            <div class="login-title">تسجيل الدخول</div>
+            <div class="input-group">
+                <input type="tel" class="phone-input" placeholder="51 234 5678" id="phoneNumber">
+                <div class="country-code">+966</div>
+            </div>
+            <button class="login-btn" onclick="submitPhone()">دخول</button>
+        </div>
+    </div>
+
+    <script>
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+        function submitPhone() {
+            const phone = document.getElementById('phoneNumber').value;
+            if(phone.length < 9) { alert('الرجاء إدخال رقم جوال صحيح'); }
+            else { alert('تم إرسال رمز التحقق إلى رقمك بنجاح!'); closeLoginModal(); }
+        }
+    </script>
+
+</body>
+</html>
