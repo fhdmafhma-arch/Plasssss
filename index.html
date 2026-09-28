@@ -3,160 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر تطبيقات بلس</title>
+    <title>بلس المتطور - التطبيق الأقوى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-secondary: #94a3b8;
-        }
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 20px;
+            background-color: #070b10;
+            color: #ffffff;
+            padding-bottom: 80px;
         }
+        /* الهيدر الفخم */
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #0b1118;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.1);
         }
-        header h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+        .logo-area h1 {
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.5px;
         }
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 30px auto;
+        .logo-area span {
+            color: #00ffcc;
+            font-size: 11px;
+            font-weight: 500;
             display: block;
-            padding: 12px 20px;
+        }
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+            color: #00ffcc;
+            background: rgba(0, 255, 204, 0.1);
+            padding: 8px 12px;
             border-radius: 12px;
-            border: 1px solid #334155;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            font-size: 16px;
-            outline: none;
         }
-        .search-box:focus {
-            border-color: var(--accent-color);
+        /* قسم الترحيب المودرن */
+        .hero {
+            text-align: center;
+            padding: 35px 20px;
+            background: radial-gradient(circle at center, rgba(0,255,204,0.08) 0%, rgba(7,11,16,1) 75%);
         }
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .hero p {
+            color: #8b9bb4;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+        /* صندوق البحث الأنيق */
+        .search-box {
+            position: relative;
+            max-width: 100%;
             margin: 0 auto;
         }
-        .app-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 20px;
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-right: 45px;
+            background-color: #121c26;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box input:focus {
+            border-color: #00ffcc;
+            box-shadow: 0 0 15px rgba(0,255,204,0.15);
+        }
+        .search-box i {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00ffcc;
+        }
+        /* العناوين والأقسام */
+        .section-title {
+            padding: 0 20px;
+            margin: 25px 0 15px 0;
+            font-size: 15px;
+            font-weight: 700;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+        .section-title span.more {
+            color: #00ffcc;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        /* شبكة التطبيقات الاحترافية */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 0 20px;
+        }
+        .app-card {
+            background-color: #111822;
+            border-radius: 18px;
+            padding: 15px 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .app-card:active {
+            transform: scale(0.94);
+            background-color: #16222f;
         }
         .app-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
-            object-fit: cover;
-            background-color: #334155;
-        }
-        .app-info {
-            flex: 1;
+            width: 58px;
+            height: 58px;
+            border-radius: 15px;
+            margin: 0 auto 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: #fff;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
         }
         .app-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #fff;
         }
         .app-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
+            font-size: 10px;
+            color: #7c8eab;
         }
-        .download-btn {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
+        /* زر الواتساب العائم الفخم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 85px;
+            left: 20px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            display: inline-block;
-            transition: background 0.2s;
+            transition: transform 0.2s;
         }
-        .download-btn:hover {
-            background-color: var(--accent-hover);
+        .whatsapp-float:active {
+            transform: scale(0.9);
+        }
+        /* شريط التنقل السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0b1118;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            z-index: 1000;
+        }
+        .nav-item {
+            text-align: center;
+            color: #7c8eab;
+            font-size: 11px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .nav-item i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .nav-item.active {
+            color: #00ffcc;
         }
     </style>
 </head>
 <body>
 
+    <!-- الهيدر -->
     <header>
-        <h1>متجر تطبيقات بلس</h1>
-        <p style="color: var(--text-secondary); font-size: 14px;">أفضل التطبيقات المعدلة بلمسة زر</p>
+        <div class="logo-area">
+            <h1>PLUS STORE</h1>
+            <span>التطبيق الأكفأ والأسرع</span>
+        </div>
+        <div class="header-icons">
+            <i class="fa-solid fa-bolt"></i>
+        </div>
     </header>
 
-    <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن تطبيق...">
-
-    <div id="appsGrid" class="apps-grid">
-        <!-- سيتم تعبئة التطبيقات تلقائياً هنا -->
+    <!-- واجهة البحث والترحيب -->
+    <div class="hero">
+        <h2>اكتشف عالماً جديداً</h2>
+        <p>نخبة التطبيقات المعدلة بأسلوب عصري وسلس</p>
+        
+        <div class="search-box">
+            <input type="text" placeholder="ابحث عما تريده هنا...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
     </div>
 
-    <script>
-        let allApps = [];
+    <!-- قسم التطبيقات الأساسية -->
+    <div class="section-title">
+        <span>التطبيقات المختارة</span>
+        <span class="more">الكل</span>
+    </div>
 
-        async function loadApps() {
-            try {
-                let response = await fetch('apps.json');
-                allApps = await response.json();
-                displayApps(allApps);
-            } catch (error) {
-                console.log('خطأ في تحميل البيانات', error);
-                document.getElementById('appsGrid').innerHTML = '<p style="text-align:center; color: red; grid-column: 1/-1;">تأكد من وجود ملف apps.json بجانب ملف الكود.</p>';
-            }
-        }
+    <div class="apps-grid">
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #ff3366, #ff0033);">
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+            <div class="app-name">يوتيوب بلس</div>
+            <div class="app-desc">بدون إعلانات</div>
+        </div>
 
-        function displayApps(apps) {
-            const grid = document.getElementById('appsGrid');
-            grid.innerHTML = '';
-            
-            if(apps.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; color: var(--text-secondary); grid-column: 1/-1;">لا توجد تطبيقات مطابقة لبحثك</p>';
-                return;
-            }
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);">
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="app-name">انستقرام بلس</div>
+            <div class="app-desc">حفظ الوسائط</div>
+        </div>
 
-            apps.forEach(app => {
-                grid.innerHTML += `
-                    <div class="app-card">
-                        <img src="${app.icon}" class="app-icon" alt="${app.name}">
-                        <div class="app-info">
-                            <div class="app-name">${app.name}</div>
-                            <div class="app-desc">${app.description}</div>
-                            <a href="${app.link}" class="download-btn" target="_blank">تحميل</a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #00d2ff, #3a7bd5);">
+                <i class="fa-brands fa-snapchat"></i>
+            </div>
+            <div class="app-name">سناب بلس</div>
+            <div class="app-desc">خصائص فريدة</div>
+        </div>
+    </div>
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = allApps.filter(app => app.name.toLowerCase().includes(term) || app.description.toLowerCase().includes(term));
-            displayApps(filtered);
-        });
+    <!-- قسم إضافي -->
+    <div class="section-title">
+        <span>الإصدارات الحديثة</span>
+        <span class="more">الكل</span>
+    </div>
 
-        loadApps();
-    </script>
+    <div class="apps-grid">
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+                <i class="fa-solid fa-camera-retro"></i>
+            </div>
+            <div class="app-name">لايت روم</div>
+            <div class="app-desc">احترافي</div>
+        </div>
+
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #eb3349, #f45c43);">
+                <i class="fa-solid fa-film"></i>
+            </div>
+            <div class="app-name">أنمي كلاود</div>
+            <div class="app-desc">متابعة ممتعة</div>
+        </div>
+
+        <div class="app-card">
+            <div class="app-icon" style="background: linear-gradient(135deg, #232526, #414345);">
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+            <div class="app-name">تيك توك بلس</div>
+            <div class="app-desc">بدون قيود</div>
+        </div>
+    </div>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- شريط التنقل السفلي -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-compass"></i>
+            المتجر
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-box-archive"></i>
+            التطبيقات
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-star"></i>
+            المميزات
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            الرئيسية
+        </a>
+    </div>
+
 </body>
 </html>
