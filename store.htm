@@ -32,6 +32,7 @@
             white-space: nowrap;
         }
 
+        /* الهيدر المطبق تماماً حسب الصورة */
         header {
             display: flex;
             justify-content: space-between;
@@ -44,8 +45,19 @@
             z-index: 100;
         }
 
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        .header-left { display: flex; align-items: center; gap: 15px; }
+        /* جهة اليمين: أيقونة البحث وثلاث خطوط القائمة */
+        .header-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+
+        /* جهة اليسار: أيقونة السلة وأيقونة الحساب */
+        .header-left { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
 
         .header-icon {
             font-size: 18px;
@@ -55,7 +67,10 @@
             position: relative;
         }
 
-        .store-logo-box { text-align: center; }
+        /* وسط الهيدر: اسم المتجر */
+        .store-logo-box { 
+            text-align: center; 
+        }
         .store-logo {
             font-size: 15px;
             font-weight: 900;
@@ -66,7 +81,13 @@
             gap: 4px;
         }
         .store-logo span { color: #00ffcc; }
-        .store-subtitle { font-size: 9px; color: #8a9ba8; font-weight: 700; margin-top: 2px; }
+        .store-subtitle { 
+            font-size: 9px; 
+            color: #8a9ba8; 
+            font-weight: 700; 
+            margin-top: 2px; 
+            text-align: center;
+        }
 
         .hero-banner {
             text-align: center;
@@ -194,16 +215,21 @@
         <span>⚡ تفعيل فوري وسريع</span>
     </div>
 
-    <!-- الهيدر المترتب تماماً حسب طلبك -->
+    <!-- الهيدر المترتب بالمللي نفس الصورة -->
     <header>
+        <!-- اليمين: البحث وثلاث خطوط القائمة -->
         <div class="header-right">
             <a href="search.html" class="header-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <i class="fa-solid fa-bars header-icon" onclick="openLoginModal()"></i>
+            <i class="fa-solid fa-bars header-icon" onclick="alert('القائمة الرئيسية')"></i>
         </div>
+
+        <!-- الوسط: اسم المتجر -->
         <div class="store-logo-box">
             <div class="store-logo">ألترا بلس | <span>ULTRA PLUS</span></div>
             <div class="store-subtitle">التطبيق الأكثر مبيعاً</div>
         </div>
+
+        <!-- اليسار: السلة والحساب -->
         <div class="header-left">
             <i class="fa-regular fa-user header-icon" onclick="openLoginModal()" title="حسابي"></i>
             <a href="cart.html" class="header-icon" style="position: relative;">
@@ -234,7 +260,7 @@
                         <div class="old-price">139 ر.س</div>
                     </div>
                 </div>
-                <a href="cart.html" class="add-to-cart-btn">
+                <a href="https://wa.me/" class="add-to-cart-btn" target="_blank">
                     <i class="fa-solid fa-bag-shopping"></i> اطلب الآن
                 </a>
             </div>
@@ -255,7 +281,7 @@
                         <div class="old-price">279 ر.س</div>
                     </div>
                 </div>
-                <a href="cart.html" class="add-to-cart-btn">
+                <a href="https://wa.me/" class="add-to-cart-btn" target="_blank">
                     <i class="fa-solid fa-bag-shopping"></i> اطلب الآن
                 </a>
             </div>
@@ -266,7 +292,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- الشريط السفلي الشغال بالكامل -->
     <div class="bottom-nav">
         <div class="nav-item" onclick="openLoginModal()">
             <i class="fa-regular fa-user"></i>
@@ -281,10 +306,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             بحث
         </a>
-        <a href="search.html" class="nav-item">
+        <div class="nav-item" onclick="alert('قسم التصنيفات قريباً')">
             <i class="fa-solid fa-layer-group"></i>
             التصنيفات
-        </a>
+        </div>
         <a href="store.html" class="nav-item active">
             <i class="fa-solid fa-house"></i>
             الرئيسية
